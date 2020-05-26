@@ -1,26 +1,26 @@
 <?php
 
-namespace WP_Rocket\Tests\Unit\inc\Engine\CriticalPath\RESTWPPost;
+namespace WPMedia\CriticalPath\Tests\Unit\RESTWPPost;
 
 use Brain\Monkey\Functions;
 use WP_REST_Request;
 use WP_Rocket\Admin\Options_Data;
-use WPMedia\APIClient;
-use WPMedia\ProcessorService;
-use WPMedia\DataManager;
-use WPMedia\RESTWPPost;
+use WPMedia\CriticalPath\APIClient;
+use WPMedia\CriticalPath\ProcessorService;
+use WPMedia\CriticalPath\DataManager;
+use WPMedia\CriticalPath\RESTWPPost;
 use WP_Rocket\Tests\Unit\FilesystemTestCase;
 use WP_Error;
 use Mockery;
 
 /**
- * @covers \WPMedia\RESTWPPost::generate
+ * @covers \WPMedia\CriticalPath\RESTWPPost::generate
  *
  * @group  CriticalPath
  * @group  vfs
  */
 class Test_Generate extends FilesystemTestCase {
-	protected $path_to_test_data = '/inc/Engine/CriticalPath/RESTWPPost/generate.php';
+	protected $path_to_test_data = '/RESTWPPost/generate.php';
 	protected static $mockCommonWpFunctionsInSetUp = true;
 
 	public static function setUpBeforeClass() {

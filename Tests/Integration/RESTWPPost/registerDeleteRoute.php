@@ -1,15 +1,15 @@
 <?php
 
-namespace WP_Rocket\Tests\Integration\inc\Engine\CriticalPath\RESTWPPost;
+namespace WPMedia\CriticalPath\Tests\Integration\RESTWPPost;
 
 use WP_Rocket\Tests\Integration\RESTVfsTestCase;
 
 /**
- * @covers \WPMedia\RESTWPPost::register_delete_route
+ * @covers \WPMedia\CriticalPath\RESTWPPost::register_delete_route
  * @group  CriticalPath
  */
 class Test_RegisterDeleteRouter extends RESTVfsTestCase {
-	protected $path_to_test_data = '/inc/Engine/CriticalPath/RESTWPPost/delete.php';
+	protected $path_to_test_data = '/RESTWPPost/delete.php';
 
 	/**
 	 * Test should register the disable route with the WP REST API.

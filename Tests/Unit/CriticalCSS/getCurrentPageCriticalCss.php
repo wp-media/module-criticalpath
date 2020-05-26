@@ -1,22 +1,22 @@
 <?php
 
-namespace WP_Rocket\Tests\Unit\inc\Engine\CriticalPath\CriticalCSS;
+namespace WPMedia\CriticalPath\Tests\Unit\CriticalCSS;
 
 use Mockery;
 use Brain\Monkey\Functions;
 use WP_Rocket\Admin\Options_Data;
-use WPMedia\CriticalCSS;
-use WPMedia\CriticalCSSGeneration;
+use WPMedia\CriticalPath\CriticalCSS;
+use WPMedia\CriticalPath\CriticalCSSGeneration;
 use WP_Rocket\Tests\Unit\FilesystemTestCase;
 
 /**
- * @covers \WPMedia\CriticalCSS::get_current_page_critical_css
+ * @covers \WPMedia\CriticalPath\CriticalCSS::get_current_page_critical_css
  *
  * @group  CriticalPath
  * @group  vfs
  */
 class Test_GetCurrentPageCriticalCSS extends FilesystemTestCase {
-	protected $path_to_test_data = '/inc/Engine/CriticalPath/CriticalCSS/getCurrentPageCriticalCss.php';
+	protected $path_to_test_data = '/CriticalCSS/getCurrentPageCriticalCss.php';
 
 	public function setUp() {
 		parent::setUp();

@@ -1,23 +1,23 @@
 <?php
 
-namespace WP_Rocket\Tests\Unit\inc\Engine\CriticalPath\CriticalCSS;
+namespace WPMedia\CriticalPath\Tests\Unit\CriticalCSS;
 
 use Mockery;
 use Brain\Monkey\Functions;
 use WP_Rocket\Admin\Options_Data;
-use WPMedia\CriticalCSS;
-use WPMedia\CriticalCSSGeneration;
+use WPMedia\CriticalPath\CriticalCSS;
+use WPMedia\CriticalPath\CriticalCSSGeneration;
 use WP_Rocket\Tests\Unit\FilesystemTestCase;
 
 /**
- * @covers \WPMedia\CriticalCSS::get_critical_css_content
+ * @covers \WPMedia\CriticalPath\CriticalCSS::get_critical_css_content
  *
  * @group  CriticalPath
  * @group  vfs
- * @group CriticalCssContent
+ * @group  CriticalCssContent
  */
 class Test_GetCriticalCssContent extends FilesystemTestCase {
-	protected $path_to_test_data = '/inc/Engine/CriticalPath/CriticalCSS/getCriticalCssContent.php';
+	protected $path_to_test_data = '/CriticalCSS/getCriticalCssContent.php';
 
 	public function setUp() {
 		parent::setUp();

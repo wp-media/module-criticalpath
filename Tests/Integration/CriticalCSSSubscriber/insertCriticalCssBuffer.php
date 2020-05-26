@@ -1,15 +1,15 @@
 <?php
 
-namespace WP_Rocket\Tests\Integration\inc\Engine\CriticalPath\CriticalCSSSubscriber;
+namespace WPMedia\CriticalPath\Tests\Integration\CriticalCSSSubscriber;
 
 use WP_Rocket\Tests\Integration\ContentTrait;
 use WP_Rocket\Tests\Integration\FilesystemTestCase;
 
 /**
- * @covers \WPMedia\CriticalCSSSubscriber::insert_critical_css_buffer
+ * @covers \WPMedia\CriticalPath\CriticalCSSSubscriber::insert_critical_css_buffer
  * @uses   ::rocket_get_constant
  * @uses   ::is_rocket_post_excluded_option
- * @uses   \WPMedia\CriticalCss::get_critical_css_content
+ * @uses   \WPMedia\CriticalPath\CriticalCss::get_critical_css_content
  * @uses   \WP_Rocket\Admin\Options_Data::get
  *
  * @group  CriticalPath
@@ -18,7 +18,7 @@ use WP_Rocket\Tests\Integration\FilesystemTestCase;
 class Test_InsertCriticalCssBuffer extends FilesystemTestCase {
 	use ContentTrait;
 
-	protected $path_to_test_data = '/inc/Engine/CriticalPath/CriticalCSSSubscriber/insertCriticalCssBuffer.php';
+	protected $path_to_test_data = '/CriticalCSSSubscriber/insertCriticalCssBuffer.php';
 
 	protected static $use_settings_trait = true;
 	private static   $user_id;

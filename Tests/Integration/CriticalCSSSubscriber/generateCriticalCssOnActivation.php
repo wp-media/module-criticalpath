@@ -1,14 +1,14 @@
 <?php
-namespace WP_Rocket\Tests\Integration\inc\Engine\CriticalPath\CriticalCSSSubscriber;
+namespace WPMedia\CriticalPath\Tests\Integration\CriticalCSSSubscriber;
 
-use WPMedia\CriticalCSSSubscriber;
+use WPMedia\CriticalPath\CriticalCSSSubscriber;
 use WP_Rocket\Tests\Integration\FilesystemTestCase;
 
 /**
- * @covers \WPMedia\CriticalCSSSubscriber::generate_critical_css_on_activation
- * @uses   \WPMedia\CriticalCss::get_critical_css_path
- * @uses   \WPMedia\CriticalCss::process_handler
- * @uses   \WPMedia\CriticalCSSGeneration::cancel_process
+ * @covers \WPMedia\CriticalPath\CriticalCSSSubscriber::generate_critical_css_on_activation
+ * @uses   \WPMedia\CriticalPath\CriticalCss::get_critical_css_path
+ * @uses   \WPMedia\CriticalPath\CriticalCss::process_handler
+ * @uses   \WPMedia\CriticalPath\CriticalCSSGeneration::cancel_process
  * @uses   ::rocket_mkdir_p
  * @uses   ::rocket_get_constant
  *
@@ -17,7 +17,7 @@ use WP_Rocket\Tests\Integration\FilesystemTestCase;
  * @group  vfs
  */
 class Test_GenerateCriticalCssOnActivation extends FilesystemTestCase {
-	protected $path_to_test_data = '/inc/Engine/CriticalPath/CriticalCSSSubscriber/generateCriticalCssOnActivation.php';
+	protected $path_to_test_data = '/CriticalCSSSubscriber/generateCriticalCssOnActivation.php';
 	protected static $transients = [
 		'rocket_critical_css_generation_process_running' => null,
 	];

@@ -1,11 +1,11 @@
 <?php
 
-namespace WP_Rocket\Tests\Integration\inc\Engine\CriticalPath\AdminSubscriber;
+namespace WPMedia\CriticalPath\Tests\Integration\AdminSubscriber;
 
 use WP_Rocket\Tests\Integration\TestCase;
 
 /**
- * @covers \WPMedia\AdminSubscriber::add_hidden_async_css_mobile
+ * @covers \WPMedia\CriticalPath\AdminSubscriber::add_hidden_async_css_mobile
  *
  * @group  AdminOnly
  * @group  CriticalPath

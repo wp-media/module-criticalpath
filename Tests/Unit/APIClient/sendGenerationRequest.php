@@ -1,14 +1,14 @@
 <?php
-namespace WP_Rocket\Tests\Unit\inc\Engine\CriticalPath\APIClient;
+namespace WPMedia\CriticalPath\Tests\Unit\APIClient;
 
-use WPMedia\APIClient;
+use WPMedia\CriticalPath\APIClient;
 use WP_Rocket\Tests\Unit\TestCase;
 use Brain\Monkey\Functions;
 use WP_Error;
 
 /**
- * @covers \WPMedia\APIClient::send_generation_request
- * @group CriticalPath
+ * @covers \WPMedia\CriticalPath\APIClient::send_generation_request
+ * @group  CriticalPath
  */
 class Test_SendGenerationRequest extends TestCase {
 	protected static $mockCommonWpFunctionsInSetUp = true;

@@ -1,15 +1,15 @@
 <?php
 
-namespace WP_Rocket\Tests\Unit\inc\Engine\CriticalPath\CriticalCSSSubscriber;
+namespace WPMedia\CriticalPath\Tests\Unit\CriticalCSSSubscriber;
 
 use Brain\Monkey\Functions;
 use WP_Rocket\Tests\Unit\FilesystemTestCase;
 
 /**
- * @covers \WPMedia\CriticalCSSSubscriber::generate_critical_css_on_activation
- * @uses   \WPMedia\CriticalCss::get_critical_css_path
- * @uses   \WPMedia\CriticalCss::process_handler
- * @uses   \WPMedia\CriticalCSSGeneration::cancel_process
+ * @covers \WPMedia\CriticalPath\CriticalCSSSubscriber::generate_critical_css_on_activation
+ * @uses   \WPMedia\CriticalPath\CriticalCss::get_critical_css_path
+ * @uses   \WPMedia\CriticalPath\CriticalCss::process_handler
+ * @uses   \WPMedia\CriticalPath\CriticalCSSGeneration::cancel_process
  * @uses   ::rocket_mkdir_p
  * @uses   ::rocket_get_constant
  *
@@ -20,7 +20,7 @@ use WP_Rocket\Tests\Unit\FilesystemTestCase;
 class Test_GenerateCriticalCssOnActivation extends FilesystemTestCase {
 	use SubscriberTrait;
 
-	protected $path_to_test_data = '/inc/Engine/CriticalPath/CriticalCSSSubscriber/generateCriticalCssOnActivation.php';
+	protected $path_to_test_data = '/CriticalCSSSubscriber/generateCriticalCssOnActivation.php';
 
 	/**
 	 * @dataProvider nonMultisiteTestData

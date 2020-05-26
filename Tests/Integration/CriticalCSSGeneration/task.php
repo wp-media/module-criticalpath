@@ -1,15 +1,15 @@
 <?php
 
-namespace WP_Rocket\Tests\Integration\inc\Engine\CriticalPath\CriticalCSSGeneration;
+namespace WPMedia\CriticalPath\Tests\Integration\CriticalCSSGeneration;
 
 use Mockery;
 use WP_Error;
 use WP_Rocket\Tests\Integration\TestCase;
-use WPMedia\ProcessorService;
-use WPMedia\CriticalCSSGeneration;
+use WPMedia\CriticalPath\ProcessorService;
+use WPMedia\CriticalPath\CriticalCSSGeneration;
 
 /**
- * @covers \WPMedia\CriticalCSSGeneration::task
+ * @covers \WPMedia\CriticalPath\CriticalCSSGeneration::task
  *
  * @group CriticalPath
  * @group task

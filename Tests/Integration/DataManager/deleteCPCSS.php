@@ -1,20 +1,20 @@
 <?php
 
-namespace WP_Rocket\Tests\Integration\inc\Engine\CriticalPath\DataManager;
+namespace WPMedia\CriticalPath\Tests\Integration\DataManager;
 
 use WP_Error;
-use WPMedia\DataManager;
+use WPMedia\CriticalPath\DataManager;
 use WP_Rocket\Tests\Integration\FilesystemTestCase;
 
 /**
- * @covers \WPMedia\DataManager::delete_cpcss
+ * @covers \WPMedia\CriticalPath\DataManager::delete_cpcss
  * @uses   ::rocket_direct_filesystem
  *
  * @group  CriticalPath
  * @group  vfs
  */
 class Test_DeleteCPCSS extends FilesystemTestCase {
-	protected $path_to_test_data = '/inc/Engine/CriticalPath/DataManager/deleteCPCSS.php';
+	protected $path_to_test_data = '/DataManager/deleteCPCSS.php';
 
 	protected static $mockCommonWpFunctionsInSetUp = true;
 

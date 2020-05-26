@@ -1,13 +1,13 @@
 <?php
 
-namespace WP_Rocket\Tests\Unit\inc\Engine\CriticalPath\DataManager;
+namespace WPMedia\CriticalPath\Tests\Unit\DataManager;
 
 use Brain\Monkey\Functions;
-use WPMedia\DataManager;
+use WPMedia\CriticalPath\DataManager;
 use WP_Rocket\Tests\Unit\TestCase;
 
 /**
- * @covers \WPMedia\DataManager::delete_cache_job_id
+ * @covers \WPMedia\CriticalPath\DataManager::delete_cache_job_id
  *
  * @group  CriticalPath
  * @group  vfs

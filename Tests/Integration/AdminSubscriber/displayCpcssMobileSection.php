@@ -1,12 +1,12 @@
 <?php
 
-namespace WP_Rocket\Tests\Integration\inc\Engine\CriticalPath\AdminSubscriber;
+namespace WPMedia\CriticalPath\Tests\Integration\AdminSubscriber;
 
 use WP_Rocket\Tests\Integration\CapTrait;
 use WP_Rocket\Tests\Integration\TestCase;
 
 /**
- * @covers \WPMedia\AdminSubscriber::display_cpcss_mobile_section
+ * @covers \WPMedia\CriticalPath\AdminSubscriber::display_cpcss_mobile_section
  *
  * @group  AdminOnly
  * @group  CriticalPath

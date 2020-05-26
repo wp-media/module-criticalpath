@@ -1,12 +1,12 @@
 <?php
 
-namespace WP_Rocket\Tests\Integration\inc\Engine\CriticalPath\AdminSubscriber;
+namespace WPMedia\CriticalPath\Tests\Integration\AdminSubscriber;
 
 use WP_Rocket\Tests\Integration\AjaxTestCase;
 use WP_Rocket\Tests\Integration\CapTrait;
 
 /**
- * @covers \WPMedia\AdminSubscriber::enable_mobile_cpcss
+ * @covers \WPMedia\CriticalPath\AdminSubscriber::enable_mobile_cpcss
  * @uses   ::rocket_get_constant
  *
  * @group  AdminOnly

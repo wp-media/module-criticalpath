@@ -1,18 +1,18 @@
 <?php
 
-namespace WP_Rocket\Tests\Integration\inc\Engine\CriticalPath\CriticalCSS;
+namespace WPMedia\CriticalPath\Tests\Integration\CriticalCSS;
 
 use Brain\Monkey\Functions;
 use WP_Rocket\Tests\Integration\FilesystemTestCase;
 
 /**
- * @covers \WPMedia\CriticalCSS::get_current_page_critical_css
+ * @covers \WPMedia\CriticalPath\CriticalCSS::get_current_page_critical_css
  *
  * @group  CriticalPath
  * @group  vfs
  */
 class Test_GetCurrentPageCriticalCSS extends FilesystemTestCase {
-	protected $path_to_test_data = '/inc/Engine/CriticalPath/CriticalCSS/getCurrentPageCriticalCss.php';
+	protected $path_to_test_data = '/CriticalCSS/getCurrentPageCriticalCss.php';
 	protected static $critical_css;
 	protected $async_css_mobile;
 	protected $is_mobile;

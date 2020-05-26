@@ -1,13 +1,13 @@
 <?php
 
-namespace WP_Rocket\Tests\Unit\inc\Engine\CriticalPath\AdminSubscriber;
+namespace WPMedia\CriticalPath\Tests\Unit\AdminSubscriber;
 
 use Brain\Monkey\Functions;
 use WP_Rocket\Tests\Integration\CapTrait;
 use WP_Rocket\Tests\Integration\TestCase;
 
 /**
- * @covers \WPMedia\AdminSubscriber::enqueue_admin_edit_script
+ * @covers \WPMedia\CriticalPath\AdminSubscriber::enqueue_admin_edit_script
  * @uses   ::rocket_get_constant
  *
  * @group  AdminOnly

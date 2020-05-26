@@ -1,11 +1,11 @@
 <?php
 
-namespace WP_Rocket\Tests\Unit\inc\Engine\CriticalPath\AdminSubscriber;
+namespace WPMedia\CriticalPath\Tests\Unit\AdminSubscriber;
 
 use WP_Rocket\Tests\Unit\FilesystemTestCase;
 
 /**
- * @covers \WPMedia\AdminSubscriber::cpcss_actions
+ * @covers \WPMedia\CriticalPath\AdminSubscriber::cpcss_actions
  * @uses   ::rocket_direct_filesystem
  *
  * @group  CriticalPath
@@ -13,7 +13,7 @@ use WP_Rocket\Tests\Unit\FilesystemTestCase;
 class Test_CpcssActions extends FilesystemTestCase {
 	use GenerateTrait;
 
-	protected $path_to_test_data = '/inc/Engine/CriticalPath/AdminSubscriber/cpcssActions.php';
+	protected $path_to_test_data = '/AdminSubscriber/cpcssActions.php';
 
 	protected static $mockCommonWpFunctionsInSetUp = true;
 

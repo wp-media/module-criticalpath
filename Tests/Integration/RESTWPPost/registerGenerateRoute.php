@@ -1,16 +1,16 @@
 <?php
 
-namespace WP_Rocket\Tests\Integration\inc\Engine\CriticalPath\RESTWPPost;
+namespace WPMedia\CriticalPath\Tests\Integration\RESTWPPost;
 
 use WP_Rocket\Tests\Integration\RESTVfsTestCase;
 
 /**
- * @covers \WPMedia\RESTWPPost::register_generate_route
+ * @covers \WPMedia\CriticalPath\RESTWPPost::register_generate_route
  *
  * @group  CriticalPath
  */
 class Test_RegisterGenerateRoute extends RESTVfsTestCase {
-	protected $path_to_test_data = '/inc/Engine/CriticalPath/RESTWPPost/generate.php';
+	protected $path_to_test_data = '/RESTWPPost/generate.php';
 
 	/**
 	 * Test should register the generate route with the WP REST API.

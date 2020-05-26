@@ -1,22 +1,22 @@
 <?php
 
-namespace WP_Rocket\Tests\Integration\inc\Engine\CriticalPath\CriticalCSSSubscriber;
+namespace WPMedia\CriticalPath\Tests\Integration\CriticalCSSSubscriber;
 
 use WP_Rocket\Tests\Integration\FilesystemTestCase;
 use Brain\Monkey\Functions;
 use Brain\Monkey\Filters;
 
 /**
- * @covers \WPMedia\CriticalCSSSubscriber::maybe_generate_cpcss_mobile
- * @uses   \WPMedia\CriticalCss::process_handler
- * @uses   \WPMedia\CriticalCSSGeneration::cancel_process
+ * @covers \WPMedia\CriticalPath\CriticalCSSSubscriber::maybe_generate_cpcss_mobile
+ * @uses   \WPMedia\CriticalPath\CriticalCss::process_handler
+ * @uses   \WPMedia\CriticalPath\CriticalCSSGeneration::cancel_process
  * @uses   ::rocket_get_constant
  *
  * @group  Subscribers
  * @group  CriticalPath
  */
 class Test_MaybeGenerateCpcssMobile extends FilesystemTestCase {
-	protected      $path_to_test_data = '/inc/Engine/CriticalPath/CriticalCSSSubscriber/maybeGenerateCpcssMobile.php';
+	protected      $path_to_test_data = '/CriticalCSSSubscriber/maybeGenerateCpcssMobile.php';
 	private        $subscriber;
 	private static $container;
 

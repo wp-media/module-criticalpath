@@ -1,12 +1,12 @@
 <?php
 
-namespace WP_Rocket\Tests\Unit\inc\Engine\CriticalPath\AdminSubscriber;
+namespace WPMedia\CriticalPath\Tests\Unit\AdminSubscriber;
 
 use Brain\Monkey\Functions;
 use WP_Rocket\Tests\Unit\TestCase;
 
 /**
- * @covers \WPMedia\AdminSubscriber::cpcss_section
+ * @covers \WPMedia\CriticalPath\AdminSubscriber::cpcss_section
  *
  * @group  CriticalPath
  */

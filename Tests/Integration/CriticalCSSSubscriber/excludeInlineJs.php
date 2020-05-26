@@ -1,10 +1,10 @@
 <?php
-namespace WP_Rocket\Tests\Integration\inc\Engine\CriticalPath\CriticalCSSSubscriber;
+namespace WPMedia\CriticalPath\Tests\Integration\CriticalCSSSubscriber;
 
 use WP_Rocket\Tests\Integration\TestCase;
 
 /**
- * @covers \WPMedia\CriticalCSSSubscriber::exclude_inline_js
+ * @covers \WPMedia\CriticalPath\CriticalCSSSubscriber::exclude_inline_js
  *
  * @group  Subscribers
  * @group  CriticalCss

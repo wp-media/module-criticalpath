@@ -1,24 +1,24 @@
 <?php
 
-namespace WP_Rocket\Tests\Unit\inc\Engine\CriticalPath\CriticalCSS;
+namespace WPMedia\CriticalPath\Tests\Unit\CriticalCSS;
 
 use Brain\Monkey\Functions;
 use Brain\Monkey\Filters;
 use Mockery;
 use WP_Rocket\Admin\Options_Data;
-use WPMedia\CriticalCSS;
-use WPMedia\CriticalCSSGeneration;
+use WPMedia\CriticalPath\CriticalCSS;
+use WPMedia\CriticalPath\CriticalCSSGeneration;
 use WP_Rocket\Tests\Unit\FilesystemTestCase;
 use wpdb;
 
 /**
- * @covers \WPMedia\CriticalCSS::process_handler
+ * @covers \WPMedia\CriticalPath\CriticalCSS::process_handler
  *
  * @group  CriticalCss
  * @group  CriticalPath
  */
 class Test_ProcessHandler extends FilesystemTestCase {
-	protected $path_to_test_data = '/inc/Engine/CriticalPath/CriticalCSS/processHandler.php';
+	protected $path_to_test_data = '/CriticalCSS/processHandler.php';
 
 	private $critical_css;
 	private $expected_items = [];

@@ -1,22 +1,22 @@
 <?php
 
-namespace WP_Rocket\Tests\Unit\inc\Engine\CriticalPath\ProcessorService;
+namespace WPMedia\CriticalPath\Tests\Unit\ProcessorService;
 
 use Brain\Monkey\Functions;
-use WPMedia\APIClient;
-use WPMedia\ProcessorService;
-use WPMedia\DataManager;
+use WPMedia\CriticalPath\APIClient;
+use WPMedia\CriticalPath\ProcessorService;
+use WPMedia\CriticalPath\DataManager;
 use WP_Rocket\Tests\Unit\FilesystemTestCase;
 use WP_Error;
 
 /**
- * @covers \WPMedia\ProcessorService::process_generate
+ * @covers \WPMedia\CriticalPath\ProcessorService::process_generate
  *
  * @group  CriticalPath
  * @group  vfs
  */
 class Test_ProcessGenerate extends FilesystemTestCase {
-	protected $path_to_test_data = '/inc/Engine/CriticalPath/ProcessorService/processGenerate.php';
+	protected $path_to_test_data = '/ProcessorService/processGenerate.php';
 	protected static $mockCommonWpFunctionsInSetUp = true;
 
 	/**

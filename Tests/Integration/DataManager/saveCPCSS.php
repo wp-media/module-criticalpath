@@ -1,18 +1,18 @@
 <?php
 
-namespace WP_Rocket\Tests\Integration\inc\Engine\CriticalPath\DataManager;
+namespace WPMedia\CriticalPath\Tests\Integration\DataManager;
 
-use WPMedia\DataManager;
+use WPMedia\CriticalPath\DataManager;
 use WP_Rocket\Tests\Integration\FilesystemTestCase;
 
 /**
- * @covers \WPMedia\DataManager::save_cpcss
+ * @covers \WPMedia\CriticalPath\DataManager::save_cpcss
  *
  * @group CriticalPath
  * @group vfs
  */
 class Test_SaveCPCSS extends FilesystemTestCase {
-	protected $path_to_test_data = '/inc/Engine/CriticalPath/DataManager/saveCPCSS.php';
+	protected $path_to_test_data = '/DataManager/saveCPCSS.php';
 
 	/**
 	 * @dataProvider providerTestData

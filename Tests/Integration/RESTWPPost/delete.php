@@ -1,20 +1,20 @@
 <?php
 
-namespace WP_Rocket\Tests\Integration\inc\Engine\CriticalPath\RESTWPPost;
+namespace WPMedia\CriticalPath\Tests\Integration\RESTWPPost;
 
 use WP_Rocket\Tests\Integration\RESTVfsTestCase;
 
 /**
- * @covers \WPMedia\RESTWPPost::delete
- * @uses   \WPMedia\ProcessorService::process_delete
- * @uses   \WPMedia\DataManager::delete_cpcss
+ * @covers \WPMedia\CriticalPath\RESTWPPost::delete
+ * @uses   \WPMedia\CriticalPath\ProcessorService::process_delete
+ * @uses   \WPMedia\CriticalPath\DataManager::delete_cpcss
  * @uses   \WP_Rocket\Admin\Options_Data::get
  *
  * @group  CriticalPath
  * @group  vfs
  */
 class Test_Delete extends RESTVfsTestCase {
-	protected $path_to_test_data = '/inc/Engine/CriticalPath/RESTWPPost/delete.php';
+	protected $path_to_test_data = '/RESTWPPost/delete.php';
 
 	protected static $use_settings_trait = true;
 	protected static $had_admin_cap      = false;

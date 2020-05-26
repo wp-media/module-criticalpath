@@ -1,27 +1,27 @@
 <?php
 
-namespace WP_Rocket\Tests\Integration\inc\Engine\CriticalPath\CriticalCSS;
+namespace WPMedia\CriticalPath\Tests\Integration\CriticalCSS;
 
 use WP_Rocket\Admin\Options_Data;
-use WPMedia\APIClient;
-use WPMedia\CriticalCSS;
-use WPMedia\CriticalCSSGeneration;
-use WPMedia\DataManager;
-use WPMedia\ProcessorService;
+use WPMedia\CriticalPath\APIClient;
+use WPMedia\CriticalPath\CriticalCSS;
+use WPMedia\CriticalPath\CriticalCSSGeneration;
+use WPMedia\CriticalPath\DataManager;
+use WPMedia\CriticalPath\ProcessorService;
 use WP_Rocket\Tests\Integration\FilesystemTestCase;
 
 /**
- * @covers \WPMedia\CriticalCSS::process_handler
- * @uses   \WPMedia\CriticalCSSGeneration::save
- * @uses   \WPMedia\CriticalCSSGeneration::dispatch
- * @uses   \WPMedia\CriticalCSSGeneration::cancel_process
+ * @covers \WPMedia\CriticalPath\CriticalCSS::process_handler
+ * @uses   \WPMedia\CriticalPath\CriticalCSSGeneration::save
+ * @uses   \WPMedia\CriticalPath\CriticalCSSGeneration::dispatch
+ * @uses   \WPMedia\CriticalPath\CriticalCSSGeneration::cancel_process
  * @uses   ::rocket_get_constant
  *
  * @group  CriticalCss
  * @group  CriticalPath
  */
 class Test_ProcessHandler extends FilesystemTestCase {
-	protected $path_to_test_data = '/inc/Engine/CriticalPath/CriticalCSS/processHandler.php';
+	protected $path_to_test_data = '/CriticalCSS/processHandler.php';
 
 	private $critical_css;
 	private $to_be_removed;

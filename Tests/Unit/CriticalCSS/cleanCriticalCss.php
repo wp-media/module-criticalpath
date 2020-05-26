@@ -1,21 +1,21 @@
 <?php
 
-namespace WP_Rocket\Tests\Unit\inc\Engine\CriticalPath\CriticalCSS;
+namespace WPMedia\CriticalPath\Tests\Unit\CriticalCSS;
 
 use Brain\Monkey\Functions;
 use Mockery;
 use WP_Rocket\Admin\Options_Data;
-use WPMedia\CriticalCSS;
-use WPMedia\CriticalCSSGeneration;
+use WPMedia\CriticalPath\CriticalCSS;
+use WPMedia\CriticalPath\CriticalCSSGeneration;
 use WP_Rocket\Tests\Unit\FilesystemTestCase;
 
 /**
- * @covers \WPMedia\CriticalCSS::clean_critical_css
+ * @covers \WPMedia\CriticalPath\CriticalCSS::clean_critical_css
  *
  * @group  CriticalCss
  */
 class Test_CleanCriticalCSS extends FilesystemTestCase {
-	protected $path_to_test_data = '/inc/Engine/CriticalPath/CriticalCSS/cleanCriticalCss.php';
+	protected $path_to_test_data = '/CriticalCSS/cleanCriticalCss.php';
 
 	public function setUp() {
 		parent::setUp();

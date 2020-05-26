@@ -1,12 +1,12 @@
 <?php
 
-namespace WP_Rocket\Tests\Integration\inc\Engine\CriticalPath\DataManager;
+namespace WPMedia\CriticalPath\Tests\Integration\DataManager;
 
-use WPMedia\DataManager;
+use WPMedia\CriticalPath\DataManager;
 use WP_Rocket\Tests\Integration\TestCase;
 
 /**
- * @covers \WPMedia\DataManager::set_cache_job_id
+ * @covers \WPMedia\CriticalPath\DataManager::set_cache_job_id
  *
  * @group  CriticalPath
  */
