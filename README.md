@@ -1,16 +1,16 @@
-# Package Template
-Repository template for our packages
+# CriticalPath Module
+This module adds the integration for CriticalPath (CPCSS) to WP Rocket.
 
-# Usage
-When creating a new repository for a package or a plugin, select this repository as the template. It will initialize the new repository with all the structure & files contained in the template.
-
-# Content
-* `bin/install-wp-tests.sh`: installer for WordPress tests suite
-* `.editorconfig`: config file for your IDE to follow our coding standards
-* `.gitattributes`: list of directories & files excluded from export
-* `.gitignore`: list of directories & files excluded from versioning
-* `.travis.yml`: Travis-CI configuration file
-* `composer.json`: Base composer file to customize for the project
-* `LICENSE`: License file using GPLv3
-* `phpcs.xml`: Base PHP Code Sniffer configuration file to customize for the project
-* `README.md`: The readme displayed on Github, to customize for the project
+# Includes
+* `ServiceProvider`       - Instantiate all classes via container.
+* `APIClient`             - Communicates with CPCSS API.
+* `CriticalCSS`           - Handles the critical CSS generation process.
+* `CriticalCSSGeneration` - Extends the background process class for the critical CSS generation process.
+* `DataManager`           - Handles the Critical CSS data process ( CRUD operations ) for the CSS file.
+* `ProcessorService`      - Handles the interaction / flow between the DataManager and the APIClient.
+* `RESTWP`                - Enables and handles the REST CPCSS endpoints for generation and deletion of CPCSS.
+* `RESTWPPost`            - REST post.
+* `RESTWPInterface`       - REST interface.
+* `RESTCSSSubscriber`     - Registers WP REST API routes.
+* `AdminSubscriber`       - Handles the actions & filters on WP Rocket settings page.
+* `CriticalCSSSubscriber` - Handles the actions & filters required by Critical CSS.
