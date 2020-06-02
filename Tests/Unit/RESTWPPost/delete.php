@@ -1,21 +1,21 @@
 <?php
 
-namespace WPMedia\CriticalPath\Tests\Unit\RESTWPPost;
+namespace WP_Rocket\Tests\Unit\RESTWPPost;
 
 use Brain\Monkey\Functions;
 use WP_REST_Request;
 use WP_Rocket\Admin\Options_Data;
-use WPMedia\CriticalPath\APIClient;
-use WPMedia\CriticalPath\ProcessorService;
-use WPMedia\CriticalPath\DataManager;
-use WPMedia\CriticalPath\RESTWPPost;
+use WP_Rocket\Engine\CriticalPath\APIClient;
+use WP_Rocket\Engine\CriticalPath\ProcessorService;
+use WP_Rocket\Engine\CriticalPath\DataManager;
+use WP_Rocket\Engine\CriticalPath\RESTWPPost;
 use WP_Rocket\Tests\Unit\TestCase;
 use WP_Error;
 use Mockery;
 
 /**
- * @covers \WPMedia\CriticalPath\RESTWPPost::delete
- * @uses   \WPMedia\CriticalPath\ProcessorService::process_delete
+ * @covers \WP_Rocket\Engine\CriticalPath\RESTWPPost::delete
+ * @uses   \WP_Rocket\Engine\CriticalPath\ProcessorService::process_delete
  * @uses   \WP_Rocket\Admin\Options_Data::get
  *
  * @group  CriticalPath

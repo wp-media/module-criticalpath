@@ -1,16 +1,16 @@
 <?php
 
-namespace WPMedia\CriticalPath\Tests\Unit\CriticalCSSGeneration;
+namespace WP_Rocket\Tests\Unit\CriticalCSSGeneration;
 
 use Brain\Monkey\Functions;
 use Mockery;
 use WP_Error;
-use WPMedia\CriticalPath\CriticalCSSGeneration;
-use WPMedia\CriticalPath\ProcessorService;
+use WP_Rocket\Engine\CriticalPath\CriticalCSSGeneration;
+use WP_Rocket\Engine\CriticalPath\ProcessorService;
 use WP_Rocket\Tests\Unit\TestCase;
 
 /**
- * @covers \WPMedia\CriticalPath\CriticalCSSGeneration::task
+ * @covers \WP_Rocket\Engine\CriticalPath\CriticalCSSGeneration::task
  *
  * @group  CriticalPath
  */

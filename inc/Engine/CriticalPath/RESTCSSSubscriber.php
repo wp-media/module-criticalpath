@@ -1,13 +1,13 @@
 <?php
 
-namespace WPMedia\CriticalPath;
+namespace WP_Rocket\Engine\CriticalPath;
 
 use WP_Rocket\Event_Management\Subscriber_Interface;
 
 /**
  * Class RESTCSSSubscriber
  *
- * @package WPMedia\CriticalPath
+ * @package WP_Rocket\Engine\CriticalPath
  */
 class RESTCSSSubscriber implements Subscriber_Interface {
 

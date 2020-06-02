@@ -1,14 +1,14 @@
 <?php
 
-namespace WPMedia\CriticalPath\Tests\Unit\APIClient;
+namespace WP_Rocket\Tests\Unit\APIClient;
 
-use WPMedia\CriticalPath\APIClient;
+use WP_Rocket\Engine\CriticalPath\APIClient;
 use WP_Rocket\Tests\Unit\TestCase;
 use Brain\Monkey\Functions;
 use WP_Error;
 
 /**
- * @covers \WPMedia\CriticalPath\APIClient::get_job_details
+ * @covers \WP_Rocket\Engine\CriticalPath\APIClient::get_job_details
  *
  * @group  CriticalPath
  */

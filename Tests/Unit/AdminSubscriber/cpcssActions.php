@@ -1,11 +1,11 @@
 <?php
 
-namespace WPMedia\CriticalPath\Tests\Unit\AdminSubscriber;
+namespace WP_Rocket\Tests\Unit\AdminSubscriber;
 
 use WP_Rocket\Tests\Unit\FilesystemTestCase;
 
 /**
- * @covers \WPMedia\CriticalPath\AdminSubscriber::cpcss_actions
+ * @covers \WP_Rocket\Engine\CriticalPath\AdminSubscriber::cpcss_actions
  * @uses   ::rocket_direct_filesystem
  *
  * @group  CriticalPath

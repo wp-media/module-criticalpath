@@ -1,13 +1,13 @@
 <?php
 
-namespace WPMedia\CriticalPath\Tests\Unit\AdminSubscriber;
+namespace WP_Rocket\Tests\Unit\AdminSubscriber;
 
 use Mockery;
 use Brain\Monkey\Functions;
 use WP_Rocket\Admin\Options_Data;
 use WP_Rocket\Engine\Admin\Beacon\Beacon;
-use WPMedia\CriticalPath\CriticalCSS;
-use WPMedia\CriticalPath\AdminSubscriber;
+use WP_Rocket\Engine\CriticalPath\CriticalCSS;
+use WP_Rocket\Engine\CriticalPath\AdminSubscriber;
 
 trait GenerateTrait {
 	protected        $beacon;

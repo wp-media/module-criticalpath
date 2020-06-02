@@ -1,6 +1,6 @@
 <?php
 
-namespace WPMedia\CriticalPath;
+namespace WP_Rocket\Engine\CriticalPath;
 
 use stdClass;
 use WP_Error;

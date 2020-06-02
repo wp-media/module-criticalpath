@@ -1,18 +1,18 @@
 <?php
 
-namespace WPMedia\CriticalPath\Tests\Unit\RESTWPPost;
+namespace WP_Rocket\Tests\Unit\RESTWPPost;
 
 use Brain\Monkey\Functions;
 use WP_Rocket\Admin\Options_Data;
-use WPMedia\CriticalPath\APIClient;
-use WPMedia\CriticalPath\ProcessorService;
-use WPMedia\CriticalPath\DataManager;
-use WPMedia\CriticalPath\RESTWPPost;
-use WPMedia\PHPUnit\Unit\TestCase;
+use WP_Rocket\Engine\CriticalPath\APIClient;
+use WP_Rocket\Engine\CriticalPath\ProcessorService;
+use WP_Rocket\Engine\CriticalPath\DataManager;
+use WP_Rocket\Engine\CriticalPath\RESTWPPost;
+use WP_Rocket\Tests\Unit\TestCase;
 use Mockery;
 
 /**
- * @covers \WPMedia\CriticalPath\RESTWPPost::register_delete_route
+ * @covers \WP_Rocket\Engine\CriticalPath\RESTWPPost::register_delete_route
  * @group  CriticalPath
  */
 class Test_RegisterDeleteRoute extends TestCase {

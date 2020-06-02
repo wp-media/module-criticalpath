@@ -1,16 +1,16 @@
 <?php
 
-namespace WPMedia\CriticalPath\Tests\Unit\CriticalCSS;
+namespace WP_Rocket\Tests\Unit\CriticalCSS;
 
 use Mockery;
 use Brain\Monkey\Functions;
 use WP_Rocket\Admin\Options_Data;
-use WPMedia\CriticalPath\CriticalCSS;
-use WPMedia\CriticalPath\CriticalCSSGeneration;
+use WP_Rocket\Engine\CriticalPath\CriticalCSS;
+use WP_Rocket\Engine\CriticalPath\CriticalCSSGeneration;
 use WP_Rocket\Tests\Unit\FilesystemTestCase;
 
 /**
- * @covers \WPMedia\CriticalPath\CriticalCSS::get_critical_css_content
+ * @covers \WP_Rocket\Engine\CriticalPath\CriticalCSS::get_critical_css_content
  *
  * @group  CriticalPath
  * @group  vfs

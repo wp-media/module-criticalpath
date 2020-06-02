@@ -1,13 +1,13 @@
 <?php
 
-namespace WPMedia\CriticalPath;
+namespace WP_Rocket\Engine\CriticalPath;
 
 use WP_Error;
 
 /**
  * Class RESTWPPost
  *
- * @package WPMedia\CriticalPath
+ * @package WP_Rocket\Engine\CriticalPath
  */
 class RESTWPPost extends RESTWP {
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace WPMedia\CriticalPath;
+namespace WP_Rocket\Engine\CriticalPath;
 
 use WP_Error;
 use WP_Filesystem_Direct;
@@ -8,7 +8,7 @@ use WP_Filesystem_Direct;
 /**
  * Class DataManager
  *
- * @package WPMedia\CriticalPath
+ * @package WP_Rocket\Engine\CriticalPath
  */
 class DataManager {
 

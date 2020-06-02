@@ -1,17 +1,17 @@
 <?php
 
-namespace WPMedia\CriticalPath\Tests\Unit\CriticalCSSSubscriber;
+namespace WP_Rocket\Tests\Unit\CriticalCSSSubscriber;
 
 use Brain\Monkey\Functions;
 use Mockery;
 use WP_Rocket\Admin\Options_Data;
-use WPMedia\CriticalPath\CriticalCSS;
-use WPMedia\CriticalPath\CriticalCSSGeneration;
-use WPMedia\CriticalPath\CriticalCSSSubscriber;
+use WP_Rocket\Engine\CriticalPath\CriticalCSS;
+use WP_Rocket\Engine\CriticalPath\CriticalCSSGeneration;
+use WP_Rocket\Engine\CriticalPath\CriticalCSSSubscriber;
 use WP_Rocket\Tests\Unit\TestCase;
 
 /**
- * @covers \WPMedia\CriticalPath\CriticalCSSSubscriber::exclude_inline_js
+ * @covers \WP_Rocket\Engine\CriticalPath\CriticalCSSSubscriber::exclude_inline_js
  *
  * @group  Subscribers
  * @group  CriticalPath

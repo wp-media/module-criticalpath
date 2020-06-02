@@ -1,20 +1,20 @@
 <?php
 
-namespace WPMedia\CriticalPath\Tests\Unit\RESTWPPost;
+namespace WP_Rocket\Tests\Unit\RESTWPPost;
 
 use Brain\Monkey\Functions;
 use WP_REST_Request;
 use WP_Rocket\Admin\Options_Data;
-use WPMedia\CriticalPath\APIClient;
-use WPMedia\CriticalPath\ProcessorService;
-use WPMedia\CriticalPath\DataManager;
-use WPMedia\CriticalPath\RESTWPPost;
+use WP_Rocket\Engine\CriticalPath\APIClient;
+use WP_Rocket\Engine\CriticalPath\ProcessorService;
+use WP_Rocket\Engine\CriticalPath\DataManager;
+use WP_Rocket\Engine\CriticalPath\RESTWPPost;
 use WP_Rocket\Tests\Unit\FilesystemTestCase;
 use WP_Error;
 use Mockery;
 
 /**
- * @covers \WPMedia\CriticalPath\RESTWPPost::generate
+ * @covers \WP_Rocket\Engine\CriticalPath\RESTWPPost::generate
  *
  * @group  CriticalPath
  * @group  vfs

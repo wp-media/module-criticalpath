@@ -1,6 +1,6 @@
 <?php
 
-namespace WPMedia\CriticalPath;
+namespace WP_Rocket\Engine\CriticalPath;
 
 use WP_REST_Request;
 use WP_REST_Response;
@@ -10,7 +10,7 @@ use WP_Rocket\Admin\Options_Data;
 /**
  * Class RESTWP
  *
- * @package WPMedia\CriticalPath
+ * @package WP_Rocket\Engine\CriticalPath
  */
 abstract class RESTWP implements RESTWPInterface {
 

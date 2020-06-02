@@ -1,17 +1,17 @@
 <?php
 
-namespace WPMedia\CriticalPath\Tests\Unit\AdminSubscriber;
+namespace WP_Rocket\Tests\Unit\AdminSubscriber;
 
 use Brain\Monkey\Functions;
 use Mockery;
 use WP_Rocket\Admin\Options_Data;
 use WP_Rocket\Engine\Admin\Beacon\Beacon;
-use WPMedia\CriticalPath\CriticalCSS;
-use WPMedia\CriticalPath\AdminSubscriber;
+use WP_Rocket\Engine\CriticalPath\CriticalCSS;
+use WP_Rocket\Engine\CriticalPath\AdminSubscriber;
 use WP_Rocket\Tests\Unit\TestCase;
 
 /**
- * @covers \WPMedia\CriticalPath\AdminSubscriber::add_async_css_mobile_option
+ * @covers \WP_Rocket\Engine\CriticalPath\AdminSubscriber::add_async_css_mobile_option
  *
  * @group  CriticalPath
  */

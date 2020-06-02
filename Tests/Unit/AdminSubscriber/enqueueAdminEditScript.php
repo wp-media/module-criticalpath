@@ -1,12 +1,12 @@
 <?php
 
-namespace WPMedia\CriticalPath\Tests\Unit\AdminSubscriber;
+namespace WP_Rocket\Tests\Unit\AdminSubscriber;
 
 use Brain\Monkey\Functions;
 use WP_Rocket\Tests\Unit\TestCase;
 
 /**
- * @covers \WPMedia\CriticalPath\AdminSubscriber::enqueue_admin_edit_script
+ * @covers \WP_Rocket\Engine\CriticalPath\AdminSubscriber::enqueue_admin_edit_script
  * @uses   ::rocket_get_constant
  *
  * @group  CriticalPath

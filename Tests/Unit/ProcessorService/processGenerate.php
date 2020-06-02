@@ -1,16 +1,16 @@
 <?php
 
-namespace WPMedia\CriticalPath\Tests\Unit\ProcessorService;
+namespace WP_Rocket\Tests\Unit\ProcessorService;
 
 use Brain\Monkey\Functions;
-use WPMedia\CriticalPath\APIClient;
-use WPMedia\CriticalPath\ProcessorService;
-use WPMedia\CriticalPath\DataManager;
+use WP_Rocket\Engine\CriticalPath\APIClient;
+use WP_Rocket\Engine\CriticalPath\ProcessorService;
+use WP_Rocket\Engine\CriticalPath\DataManager;
 use WP_Rocket\Tests\Unit\FilesystemTestCase;
 use WP_Error;
 
 /**
- * @covers \WPMedia\CriticalPath\ProcessorService::process_generate
+ * @covers \WP_Rocket\Engine\CriticalPath\ProcessorService::process_generate
  *
  * @group  CriticalPath
  * @group  vfs
