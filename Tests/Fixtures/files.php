@@ -401,3 +401,18 @@ function rocket_mkdir_p( $target ) {
 
 	return false;
 }
+
+/**
+ * File creation based on WordPress Filesystem.
+ *
+ * @since 1.3.5
+ *
+ * @param string $file    The path of file will be created.
+ * @param string $content The content that will be printed in advanced-cache.php.
+ *
+ * @return bool true on success; else, false on failure.
+ */
+function rocket_put_content( $file, $content ) {
+	$chmod = rocket_get_filesystem_perms( 'file' );
+	return rocket_direct_filesystem()->put_contents( $file, $content, $chmod );
+}
