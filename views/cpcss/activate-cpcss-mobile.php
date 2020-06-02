@@ -20,7 +20,7 @@ defined( 'ABSPATH' ) || exit;
 				esc_html__( 'This is a one-time action and this button will be removed afterwards. %1$sMore info%2$s', 'rocket' ),
 				'<a href="' . esc_url( $data['beacon'] ) . '" target="_blank" rel="noopener noreferrer">',
 				'</a>'
-				);
+			);
 			?>
 		</div>
 		<div class="wpr-field-description wpr-field wpr-isHidden wpr-show-on-click">
@@ -30,7 +30,7 @@ defined( 'ABSPATH' ) || exit;
 				esc_html__( 'Your site is now using mobile-specific critical path CSS. %1$sMore info%2$s', 'rocket' ),
 				'<a href="' . esc_url( $data['beacon'] ) . '" target="_blank" rel="noopener noreferrer">',
 				'</a>'
-				);
+			);
 			?>
 		</div>
 	</div>

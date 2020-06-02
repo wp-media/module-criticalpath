@@ -23,7 +23,7 @@ $rocket_cpcss_exists = empty( $data['cpcss_exists'] );
 		esc_html__( 'Generate specific Critical Path CSS for this post. %1$sMore info%2$s', 'rocket' ),
 		'<a href="' . esc_url( $data['beacon'] ) . '" target="_blank" rel="noopener noreferrer">',
 		'</a>'
-		);
+	);
 	?>
 </p>
 <p class="cpcss_regenerate <?php echo $rocket_cpcss_exists ? 'hidden' : ''; ?>">
@@ -33,7 +33,7 @@ $rocket_cpcss_exists = empty( $data['cpcss_exists'] );
 		esc_html__( 'This post uses specific Critical Path CSS. %1$sMore info%2$s', 'rocket' ),
 		'<a href="' . esc_url( $data['beacon'] ) . '" target="_blank" rel="noopener noreferrer">',
 		'</a>'
-		);
+	);
 	?>
 </p>
 <div class="components-panel__row cpcss_generate cpcss_regenerate">
