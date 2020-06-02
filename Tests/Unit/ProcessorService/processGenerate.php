@@ -8,11 +8,12 @@ use WP_Rocket\Engine\CriticalPath\ProcessorService;
 use WP_Rocket\Engine\CriticalPath\DataManager;
 use WP_Rocket\Tests\Unit\FilesystemTestCase;
 use WP_Error;
+use Mockery;
 
 /**
  * @covers \WP_Rocket\Engine\CriticalPath\ProcessorService::process_generate
  *
- * @group  CriticalPath
+ * @group  CriticalPathX
  * @group  vfs
  */
 class Test_ProcessGenerate extends FilesystemTestCase {
@@ -158,8 +159,9 @@ class Test_ProcessGenerate extends FilesystemTestCase {
 
 		Functions\when( 'wp_strip_all_tags' )->returnArg();
 
-		$api_client = new APIClient();
-		$data_manager = new DataManager('wp-content/cache/critical-css/', $this->filesystem);
+		// TO DO: Unit test needs MOCKs
+		$api_client    = Mockery::mock( APIClient::class );// new APIClient();
+		$data_manager  = Mockery::mock( DataManager::class ); //new DataManager('wp-content/cache/critical-css/', $this->filesystem);
 		$cpcss_service = new ProcessorService( $data_manager, $api_client );
 
 		$generated = $cpcss_service->process_generate( $item_url, $item_path, $request_timeout, $is_mobile );
