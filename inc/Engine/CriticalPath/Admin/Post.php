@@ -79,7 +79,7 @@ class Post extends Abstract_Render {
 			'beacon'       => $this->beacon->get_suggest( 'async' ),
 			'cpcss_exists' => $this->cpcss_exists(),
 		];
-print_r( $data );
+
 		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo $this->generate(
 			'metabox/generate',

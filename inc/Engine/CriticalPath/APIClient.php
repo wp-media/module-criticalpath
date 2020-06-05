@@ -167,7 +167,7 @@ class APIClient {
 						// translators: %s = item URL.
 						: __( 'Critical CSS for %1$s not generated.', 'rocket' ),
 					$url
-					);
+				);
 				break;
 			default:
 				$message .= sprintf(
