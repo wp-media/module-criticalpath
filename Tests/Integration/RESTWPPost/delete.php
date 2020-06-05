@@ -1,13 +1,13 @@
 <?php
 
-namespace WPMedia\CriticalPath\Tests\Integration\RESTWPPost;
+namespace WP_Rocket\Tests\Integration\RESTWPPost;
 
 use WP_Rocket\Tests\Integration\RESTVfsTestCase;
 
 /**
- * @covers \WPMedia\CriticalPath\RESTWPPost::delete
- * @uses   \WPMedia\CriticalPath\ProcessorService::process_delete
- * @uses   \WPMedia\CriticalPath\DataManager::delete_cpcss
+ * @covers \WP_Rocket\Engine\CriticalPath\RESTWPPost::delete
+ * @uses   \WP_Rocket\Engine\CriticalPath\ProcessorService::process_delete
+ * @uses   \WP_Rocket\Engine\CriticalPath\DataManager::delete_cpcss
  * @uses   \WP_Rocket\Admin\Options_Data::get
  *
  * @group  CriticalPath

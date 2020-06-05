@@ -1,12 +1,12 @@
 <?php
 
-namespace WPMedia\CriticalPath\Tests\Integration\DataManager;
+namespace WP_Rocket\Tests\Integration\DataManager;
 
-use WPMedia\CriticalPath\DataManager;
+use WP_Rocket\Engine\CriticalPath\DataManager;
 use WP_Rocket\Tests\Integration\FilesystemTestCase;
 
 /**
- * @covers \WPMedia\CriticalPath\DataManager::save_cpcss
+ * @covers \WP_Rocket\Engine\CriticalPath\DataManager::save_cpcss
  *
  * @group CriticalPath
  * @group vfs

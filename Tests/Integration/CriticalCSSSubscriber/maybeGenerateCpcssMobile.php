@@ -1,15 +1,15 @@
 <?php
 
-namespace WPMedia\CriticalPath\Tests\Integration\CriticalCSSSubscriber;
+namespace WP_Rocket\Tests\Integration\CriticalCSSSubscriber;
 
 use WP_Rocket\Tests\Integration\FilesystemTestCase;
 use Brain\Monkey\Functions;
 use Brain\Monkey\Filters;
 
 /**
- * @covers \WPMedia\CriticalPath\CriticalCSSSubscriber::maybe_generate_cpcss_mobile
- * @uses   \WPMedia\CriticalPath\CriticalCss::process_handler
- * @uses   \WPMedia\CriticalPath\CriticalCSSGeneration::cancel_process
+ * @covers \WP_Rocket\Engine\CriticalPath\CriticalCSSSubscriber::maybe_generate_cpcss_mobile
+ * @uses   \WP_Rocket\Engine\CriticalPath\CriticalCss::process_handler
+ * @uses   \WP_Rocket\Engine\CriticalPath\CriticalCSSGeneration::cancel_process
  * @uses   ::rocket_get_constant
  *
  * @group  Subscribers

@@ -14,37 +14,21 @@ return [
 				'message' => 'Critical CSS for http://example.org/ not generated. Error: No valid stylesheets available'
 			],
 			'transient' => [
-				'generated' => 0,
 				'total'     => 1,
-				'items'     => [
-					'Critical CSS for http://example.org/ not generated. Error: No valid stylesheets available'
+				'items' => [
+					'front_page.css' => [
+						'status' => [
+							'nonmobile' => [
+								'message' => 'Critical CSS for http://example.org/ not generated. Error: No valid stylesheets available',
+								'success' => false,
+							],
+						],
+					],
 				],
 			],
-			'expected' => false,
 		],
 
-		'testShouldReturnFalseWhenTimeout' => [
-			'item' => [
-				'url'    => 'http://example.org/',
-				'path'   => 'front_page.css',
-				'check'  => 11,
-			],
-			'result' => [
-				'success' => false,
-				'code'    => 'cpcss_generation_timeout',
-				'message' => 'Critical CSS for http://example.org/ timeout. Please retry a little later.',
-			],
-			'transient' => [
-				'generated' => 0,
-				'total'     => 1,
-				'items'     => [
-					'Critical CSS for http://example.org/ timeout. Please retry a little later.',
-				],
-			],
-			'expected' => false,
-		],
-
-		'testShouldReturnItemWhenPending' => [
+		'testShouldReturnFalseAndSetTransientWhenPending' => [
 			'item' => [
 				'url'    => 'http://example.org/',
 				'path'   => 'front_page.css',
@@ -56,11 +40,6 @@ return [
 				'message' => 'pending',
 			],
 			'transient' => null,
-			'expected' => [
-				'url'    => 'http://example.org/',
-				'path'   => 'front_page.css',
-				'check'  => 1,
-			],
 		],
 
 		'testShouldReturnFalseWhenSuccess' => [
@@ -75,13 +54,18 @@ return [
 				'message' => 'success',
 			],
 			'transient' => [
-				'generated' => 1,
 				'total'     => 1,
-				'items'     => [
-					'success',
+				'items' => [
+					'front_page.css' => [
+						'status' => [
+							'nonmobile' => [
+								'message' => 'success',
+								'success' => true,
+							],
+						],
+					],
 				],
 			],
-			'expected' => false,
 		],
 	],
 ];

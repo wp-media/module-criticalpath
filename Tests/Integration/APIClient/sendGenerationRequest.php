@@ -1,13 +1,13 @@
 <?php
-namespace WPMedia\CriticalPath\Tests\Integration\APIClient;
+namespace WP_Rocket\Tests\Integration\APIClient;
 
-use WPMedia\APIClient;
-use WPMedia\CriticalPath\Tests\Integration\TestCase;
+use WP_Rocket\Engine\CriticalPath\APIClient;
+use WP_Rocket\Tests\Integration\TestCase;
 use Brain\Monkey\Functions;
 use WP_Error;
 
 /**
- * @covers \WPMedia\CriticalPath\APIClient::send_generation_request
+ * @covers \WP_Rocket\Engine\CriticalPath\APIClient::send_generation_request
  * @group CriticalPath
  */
 class Test_SendGenerationRequest extends TestCase {

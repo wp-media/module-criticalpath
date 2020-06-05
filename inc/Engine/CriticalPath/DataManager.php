@@ -67,7 +67,7 @@ class DataManager {
 							// translators: %s = item URL.
 							__( 'Critical CSS for %1$s not generated. Error: The API returned an empty response.', 'rocket' ),
 						$url
-					),
+						),
 					[
 						'status' => 400,
 					]

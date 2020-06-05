@@ -105,7 +105,7 @@ class CriticalCSS {
 			return;
 		}
 
-		$this->clean_critical_css();
+		$this->clean_critical_css( $version );
 
 		$this->stop_generation();
 
@@ -113,13 +113,8 @@ class CriticalCSS {
 
 		array_map( [ $this->process, 'push_to_queue' ], $this->items );
 
-		$transient = [
-			'generated' => 0,
-			'total'     => count( $this->items ),
-			'items'     => [],
-		];
+		$this->update_process_running_transient();
 
-		set_transient( 'rocket_critical_css_generation_process_running', $transient, HOUR_IN_SECONDS );
 		$this->process->save()->dispatch();
 	}
 
@@ -135,16 +130,52 @@ class CriticalCSS {
 	}
 
 	/**
+	 * Launches when the CPCSS generation is complete.
+	 *
+	 * @since 3.6
+	 */
+	protected function generation_complete() {
+		/**
+		 * Fires when the critical CSS generation process is complete.
+		 *
+		 * @since 2.11
+		 */
+		do_action( 'rocket_critical_css_generation_process_complete' );
+
+		set_transient( 'rocket_critical_css_generation_process_complete', get_transient( 'rocket_critical_css_generation_process_running' ), HOUR_IN_SECONDS );
+		delete_transient( 'rocket_critical_css_generation_process_running' );
+	}
+
+	/**
 	 * Deletes critical CSS files.
 	 *
 	 * @since 3.6 Replaced glob().
+	 * @since 3.6 Added $version parameter.
 	 * @since 2.11
+	 *
+	 * @param string $version Optional. Version of the CPCSS files to delete. Possible values: default, mobile, all.
 	 */
-	public function clean_critical_css() {
+	public function clean_critical_css( $version = 'default' ) {
 		foreach ( $this->get_critical_css_iterator() as $file ) {
-			if ( $this->filesystem->is_file( $file ) ) {
-				$this->filesystem->delete( $file );
+			if ( ! $this->filesystem->is_file( $file ) ) {
+				continue;
 			}
+
+			if (
+				'mobile' === $version
+				&&
+				false === strpos( $file, '-mobile' )
+			) {
+				continue;
+			} elseif (
+				'default' === $version
+				&&
+				false !== strpos( $file, '-mobile' )
+			) {
+				continue;
+			}
+
+			$this->filesystem->delete( $file );
 		}
 	}
 
@@ -344,10 +375,35 @@ class CriticalCSS {
 		 * @param array $items Array containing the type/url pair for each item to send.
 		 */
 		$this->items = (array) apply_filters( 'rocket_cpcss_items', $this->items );
+	}
 
-		if ( 'all' === $version ) {
-			ksort( $this->items );
+	/**
+	 * Updates the "rocket_critical_css_generation_process_running" transient.
+	 *
+	 * @since 3.6
+	 */
+	private function update_process_running_transient() {
+		$total = 0;
+
+		foreach ( $this->items as $item ) {
+			if ( ! isset( $item['mobile'] ) ) {
+				$total++;
+				continue;
+			}
+
+			if ( 1 === $item['mobile'] ) {
+				continue;
+			}
+
+			$total++;
 		}
+
+		$transient = [
+			'total' => $total,
+			'items' => [],
+		];
+
+		set_transient( 'rocket_critical_css_generation_process_running', $transient, HOUR_IN_SECONDS );
 	}
 
 	/**

@@ -1,11 +1,11 @@
 <?php
 
-namespace WPMedia\CriticalPath\Tests\Integration\RESTWPPost;
+namespace WP_Rocket\Tests\Integration\RESTWPPost;
 
 use WP_Rocket\Tests\Integration\RESTVfsTestCase;
 
 /**
- * @covers \WPMedia\CriticalPath\RESTWPPost::register_delete_route
+ * @covers \WP_Rocket\Engine\CriticalPath\RESTWPPost::register_delete_route
  * @group  CriticalPath
  */
 class Test_RegisterDeleteRouter extends RESTVfsTestCase {

@@ -9,7 +9,7 @@ use WP_Rocket\Tests\Unit\FilesystemTestCase;
 
 /**
  * @covers \WP_Rocket\Engine\CriticalPath\DataManager::delete_cpcss
- * @uses   ::rocket_direct_filesystem
+ * @uses ::rocket_direct_filesystem
  *
  * @group  CriticalPath
  * @group  vfs

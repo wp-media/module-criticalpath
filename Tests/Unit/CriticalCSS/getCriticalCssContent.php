@@ -13,8 +13,9 @@ use WP_Rocket\Tests\Unit\FilesystemTestCase;
  * @covers \WP_Rocket\Engine\CriticalPath\CriticalCSS::get_critical_css_content
  *
  * @group  CriticalPath
+ * @group  CriticalCSS
  * @group  vfs
- * @group  CriticalCssContent
+ * @group CriticalCssContent
  */
 class Test_GetCriticalCssContent extends FilesystemTestCase {
 	protected $path_to_test_data = '/CriticalCSS/getCriticalCssContent.php';

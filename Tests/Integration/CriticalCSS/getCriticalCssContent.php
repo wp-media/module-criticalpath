@@ -1,12 +1,12 @@
 <?php
 
-namespace WPMedia\CriticalPath\Tests\Integration\CriticalCSS;
+namespace WP_Rocket\Tests\Integration\CriticalCSS;
 
 use WP_Rocket\Tests\Integration\ContentTrait;
 use WP_Rocket\Tests\Integration\FilesystemTestCase;
 
 /**
- * @covers \WPMedia\CriticalPath\CriticalCSS::get_critical_css_content
+ * @covers \WP_Rocket\Engine\CriticalPath\CriticalCSS::get_critical_css_content
  * @uses   ::rocket_get_constant
  * @uses   \WP_Rocket\Admin\Options_Data::get
  *

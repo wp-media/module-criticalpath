@@ -1,13 +1,13 @@
 <?php
 
-namespace WPMedia\CriticalPath\Tests\Integration\DataManager;
+namespace WP_Rocket\Tests\Integration\DataManager;
 
 use WP_Error;
-use WPMedia\CriticalPath\DataManager;
+use WP_Rocket\Engine\CriticalPath\DataManager;
 use WP_Rocket\Tests\Integration\FilesystemTestCase;
 
 /**
- * @covers \WPMedia\CriticalPath\DataManager::delete_cpcss
+ * @covers \WP_Rocket\Engine\CriticalPath\DataManager::delete_cpcss
  * @uses   ::rocket_direct_filesystem
  *
  * @group  CriticalPath

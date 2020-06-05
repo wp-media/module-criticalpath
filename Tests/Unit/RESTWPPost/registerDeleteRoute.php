@@ -8,7 +8,7 @@ use WP_Rocket\Engine\CriticalPath\APIClient;
 use WP_Rocket\Engine\CriticalPath\ProcessorService;
 use WP_Rocket\Engine\CriticalPath\DataManager;
 use WP_Rocket\Engine\CriticalPath\RESTWPPost;
-use WP_Rocket\Tests\Unit\TestCase;
+use WPMedia\PHPUnit\Unit\TestCase;
 use Mockery;
 
 /**

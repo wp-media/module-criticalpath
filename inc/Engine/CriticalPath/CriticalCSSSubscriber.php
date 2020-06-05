@@ -37,16 +37,25 @@ class CriticalCSSSubscriber implements Subscriber_Interface {
 	private $filesystem;
 
 	/**
+	 * CPCSS generation and deletion service.
+	 *
+	 * @var ProcessorService instance for this service.
+	 */
+	private $cpcss_service;
+
+	/**
 	 * Creates an instance of the Critical CSS Subscriber.
 	 *
-	 * @param CriticalCSS          $critical_css Critical CSS instance.
-	 * @param Options_Data         $options      WP Rocket options.
-	 * @param WP_Filesystem_Direct $filesystem   Instance of the filesystem handler.
+	 * @param CriticalCSS          $critical_css  Critical CSS instance.
+	 * @param ProcessorService     $cpcss_service Has the logic for cpcss generation and deletion.
+	 * @param Options_Data         $options       WP Rocket options.
+	 * @param WP_Filesystem_Direct $filesystem    Instance of the filesystem handler.
 	 */
-	public function __construct( CriticalCSS $critical_css, Options_Data $options, $filesystem ) {
-		$this->critical_css = $critical_css;
-		$this->options      = $options;
-		$this->filesystem   = $filesystem;
+	public function __construct( CriticalCSS $critical_css, ProcessorService $cpcss_service, Options_Data $options, $filesystem ) {
+		$this->critical_css  = $critical_css;
+		$this->cpcss_service = $cpcss_service;
+		$this->options       = $options;
+		$this->filesystem    = $filesystem;
 	}
 
 	/**
@@ -81,11 +90,37 @@ class CriticalCSSSubscriber implements Subscriber_Interface {
 				[ 'async_css', 32 ],
 			],
 
-			'switch_theme'                                    => 'maybe_regenerate_cpcss',
-			'rocket_critical_css_generation_process_complete' => 'clean_domain_on_complete',
-			'rocket_excluded_inline_js_content'               => 'exclude_inline_js',
+			'switch_theme'                      => 'maybe_regenerate_cpcss',
+			'rocket_excluded_inline_js_content' => 'exclude_inline_js',
+			'before_delete_post'                => 'delete_cpcss',
 		];
 		// phpcs:enable WordPress.Arrays.MultipleStatementAlignment.DoubleArrowNotAligned
+	}
+
+	/**
+	 * Deletes the custom CPCSS files from /posts/ folder.
+	 *
+	 * @since 3.6
+	 *
+	 * @param int $post_id Deleted post id.
+	 */
+	public function delete_cpcss( $post_id ) {
+		if ( ! current_user_can( 'rocket_regenerate_critical_css' ) ) {
+			return;
+		}
+
+		if ( ! $this->options->get( 'async_css', 0 ) ) {
+			return;
+		}
+
+		$post_type = get_post_type( $post_id );
+		$item_path = 'posts' . DIRECTORY_SEPARATOR . "{$post_type}-{$post_id}.css";
+		$this->cpcss_service->process_delete( $item_path );
+
+		if ( $this->options->get( 'async_css_mobile', 0 ) ) {
+			$mobile_item_path = 'posts' . DIRECTORY_SEPARATOR . "{$post_type}-{$post_id}-mobile.css";
+			$this->cpcss_service->process_delete( $mobile_item_path );
+		}
 	}
 
 	/**
@@ -116,10 +151,10 @@ class CriticalCSSSubscriber implements Subscriber_Interface {
 		if ( current_user_can( 'rocket_manage_options' ) ) {
 			$message .= ' ' . sprintf(
 				// Translators: %1$s = opening link tag, %2$s = closing link tag.
-				__( 'Go to the %1$sWP Rocket settings%2$s page to track progress.', 'rocket' ),
-				'<a href="' . esc_url( admin_url( 'options-general.php?page=' . WP_ROCKET_PLUGIN_SLUG ) ) . '">',
-				'</a>'
-			);
+					__( 'Go to the %1$sWP Rocket settings%2$s page to track progress.', 'rocket' ),
+					'<a href="' . esc_url( admin_url( 'options-general.php?page=' . WP_ROCKET_PLUGIN_SLUG ) ) . '">',
+					'</a>'
+				);
 		}
 
 		rocket_notice_html(
@@ -193,11 +228,6 @@ class CriticalCSSSubscriber implements Subscriber_Interface {
 			rocket_mkdir_p( $critical_css_path );
 		}
 
-		// Bails out if directory is invalid or files already exist.
-		if ( $this->bailout_if_files_exist( $critical_css_path ) ) {
-			return;
-		}
-
 		$version = 'default';
 
 		if (
@@ -214,50 +244,6 @@ class CriticalCSSSubscriber implements Subscriber_Interface {
 
 		// Generate the CPCSS files.
 		$this->critical_css->process_handler( $version );
-	}
-
-	/**
-	 * Checks if the Critical CSS directory has files in it.
-	 *
-	 * @since 3.6
-	 *
-	 * @param string $critical_css_path Path to the directory.
-	 *
-	 * @return bool|null true when files exist or directory is invalid; else, false.
-	 */
-	private function bailout_if_files_exist( $critical_css_path ) {
-		$iterator = $this->get_critical_css_iterator( $critical_css_path );
-
-		// Directory is invalid.
-		if ( false === $iterator ) {
-			return true;
-		}
-
-		// Files exist.
-		foreach ( $iterator as $file ) {
-			if ( $file->isFile() ) {
-				return true;
-			}
-		}
-
-		return false;
-	}
-
-	/**
-	 * Gets the Critical CSS Filesystem Iterator.
-	 *
-	 * @since 3.6
-	 *
-	 * @param string $critical_css_path Path to the directory.
-	 *
-	 * @return FilesystemIterator|bool Returns iterator on success; else false.
-	 */
-	private function get_critical_css_iterator( $critical_css_path ) {
-		try {
-			return new FilesystemIterator( $critical_css_path, FilesystemIterator::SKIP_DOTS );
-		} catch ( UnexpectedValueException $e ) {
-			return false;
-		}
 	}
 
 	/**
@@ -340,26 +326,49 @@ class CriticalCSSSubscriber implements Subscriber_Interface {
 		}
 
 		$transient = get_transient( 'rocket_critical_css_generation_process_running' );
+
 		if ( ! $transient ) {
+			return;
+		}
+
+		$success_counter = 0;
+		$items_message   = '';
+
+		if ( ! empty( $transient['items'] ) ) {
+			$items_message .= '<ul>';
+
+			foreach ( $transient['items'] as $item ) {
+				$status_nonmobile = isset( $item['status']['nonmobile'] );
+				$status_mobile    = $this->is_mobile_cpcss_active() ? isset( $item['status']['mobile'] ) : true;
+				if ( $status_nonmobile && $status_mobile ) {
+					$items_message .= '<li>' . $item['status']['nonmobile']['message'] . '</li>';
+					if ( $item['status']['nonmobile']['success'] ) {
+						$success_counter ++;
+					}
+				}
+			}
+
+			$items_message .= '</ul>';
+		}
+
+		if ( ! isset( $transient['total'] ) ) {
+			return;
+		}
+
+		if (
+			0 === $success_counter
+			&&
+			0 === $transient['total']
+		) {
 			return;
 		}
 
 		$message = '<p>' . sprintf(
 			// Translators: %1$d = number of critical CSS generated, %2$d = total number of critical CSS to generate.
-			__( 'Critical CSS generation is currently running: %1$d of %2$d page types completed. (Refresh this page to view progress)', 'rocket' ),
-			$transient['generated'],
-			$transient['total']
-		) . '</p>';
-
-		if ( ! empty( $transient['items'] ) ) {
-			$message .= '<ul>';
-
-			foreach ( $transient['items'] as $item ) {
-				$message .= '<li>' . $item . '</li>';
-			}
-
-			$message .= '</ul>';
-		}
+				__( 'Critical CSS generation is currently running: %1$d of %2$d page types completed. (Refresh this page to view progress)', 'rocket' ),
+				$success_counter,
+				$transient['total']
+			) . '</p>' . $items_message;
 
 		rocket_notice_html(
 			[
@@ -390,31 +399,44 @@ class CriticalCSSSubscriber implements Subscriber_Interface {
 			return;
 		}
 
-		$status = 'success';
+		$status          = 'success';
+		$success_counter = 0;
+		$items_message   = '';
 
-		if ( 0 === $transient['generated'] ) {
+		if ( ! empty( $transient['items'] ) ) {
+			$items_message .= '<ul>';
+
+			foreach ( $transient['items'] as $item ) {
+				$status_nonmobile = isset( $item['status']['nonmobile'] );
+				$status_mobile    = $this->is_mobile_cpcss_active() ? isset( $item['status']['mobile'] ) : true;
+				if ( $status_nonmobile && $status_mobile ) {
+					$items_message .= '<li>' . $item['status']['nonmobile']['message'] . '</li>';
+					if ( $item['status']['nonmobile']['success'] ) {
+						$success_counter ++;
+					}
+				}
+			}
+
+			$items_message .= '</ul>';
+		}
+
+		if ( 0 === $success_counter && 0 === $transient['total'] ) {
+			return;
+		}
+
+		if ( 0 === $success_counter ) {
 			$status = 'error';
-		} elseif ( $transient['generated'] < $transient['total'] ) {
+		} elseif ( $success_counter < $transient['total'] ) {
 			$status = 'warning';
 		}
 
 		$message = '<p>' . sprintf(
 			// Translators: %1$d = number of critical CSS generated, %2$d = total number of critical CSS to generate.
-			__( 'Critical CSS generation finished for %1$d of %2$d page types.', 'rocket' ),
-			$transient['generated'],
-			$transient['total']
-		);
-		$message .= ' <em> (' . date_i18n( get_option( 'date_format' ) ) . ' @ ' . date_i18n( get_option( 'time_format' ) ) . ') </em></p>';
-
-		if ( ! empty( $transient['items'] ) ) {
-			$message .= '<ul>';
-
-			foreach ( $transient['items'] as $item ) {
-				$message .= '<li>' . $item . '</li>';
-			}
-
-			$message .= '</ul>';
-		}
+				__( 'Critical CSS generation finished for %1$d of %2$d page types.', 'rocket' ),
+				$success_counter,
+				$transient['total']
+			);
+		$message .= ' <em> (' . date_i18n( get_option( 'date_format' ) ) . ' @ ' . date_i18n( get_option( 'time_format' ) ) . ') </em></p>' . $items_message;
 
 		if ( 'error' === $status || 'warning' === $status ) {
 			$message .= '<p>' . __( 'Critical CSS generation encountered one or more errors.', 'rocket' ) . ' <a href="https://docs.wp-rocket.me/article/1267-troubleshooting-critical-css-generation-issues" data-beacon-article="5d5214d10428631e94f94ae6" target="_blank" rel="noreferer noopener">' . __( 'Learn more.', 'rocket' ) . '</a>';
@@ -707,11 +729,21 @@ JS;
 	}
 
 	/**
-	 * Cleans the cache when the generation is complete
+	 * Checks if mobile CPCSS is active.
 	 *
-	 * @since  3.3
+	 * @since 3.6
+	 *
+	 * @return boolean CPCSS active or not.
 	 */
-	public function clean_domain_on_complete() {
-		rocket_clean_domain();
+	private function is_mobile_cpcss_active() {
+		return (
+			$this->options->get( 'async_css', 0 )
+			&&
+			$this->options->get( 'cache_mobile', 0 )
+			&&
+			$this->options->get( 'do_caching_mobile_files', 0 )
+		)
+		&&
+		$this->options->get( 'async_css_mobile', 0 );
 	}
 }

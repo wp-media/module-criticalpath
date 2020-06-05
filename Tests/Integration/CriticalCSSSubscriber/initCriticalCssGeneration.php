@@ -1,20 +1,20 @@
 <?php
 
-namespace WPMedia\CriticalPath\Tests\Integration\CriticalCSSSubscriber;
+namespace WP_Rocket\Tests\Integration\CriticalCSSSubscriber;
 
 use WPDieException;
 use WP_Rocket\Tests\Integration\TestCase;
 
 /**
- * @covers \WPMedia\CriticalPath\CriticalCSSSubscriber::init_critical_css_generation
- * @uses   \WPMedia\CriticalPath\CriticalCss::process_handler
- * @uses   \WPMedia\CriticalPath\CriticalCSSGeneration::cancel_process
+ * @covers \WP_Rocket\Engine\CriticalPath\CriticalCSSSubscriber::init_critical_css_generation
+ * @uses   \WP_Rocket\Engine\CriticalPath\CriticalCss::process_handler
+ * @uses   \WP_Rocket\Engine\CriticalPath\CriticalCSSGeneration::cancel_process
  * @uses   ::rocket_get_constant
  *
  * @group  AdminOnly
  * @group  Subscribers
  * @group  CriticalPath
- * @group  InitGeneration
+ * @group InitGeneration
  */
 class Test_InitCriticalCssGeneration extends TestCase {
 	protected static $transients = [

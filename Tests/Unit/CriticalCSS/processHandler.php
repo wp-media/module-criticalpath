@@ -14,7 +14,7 @@ use wpdb;
 /**
  * @covers \WP_Rocket\Engine\CriticalPath\CriticalCSS::process_handler
  *
- * @group  CriticalCss
+ * @group  CriticalCSS
  * @group  CriticalPath
  */
 class Test_ProcessHandler extends FilesystemTestCase {

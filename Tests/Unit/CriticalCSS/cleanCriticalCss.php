@@ -12,7 +12,8 @@ use WP_Rocket\Tests\Unit\FilesystemTestCase;
 /**
  * @covers \WP_Rocket\Engine\CriticalPath\CriticalCSS::clean_critical_css
  *
- * @group  CriticalCss
+ * @group  CriticalPath
+ * @group  CriticalCSS
  */
 class Test_CleanCriticalCSS extends FilesystemTestCase {
 	protected $path_to_test_data = '/CriticalCSS/cleanCriticalCss.php';
@@ -26,10 +27,10 @@ class Test_CleanCriticalCSS extends FilesystemTestCase {
 	/**
 	 * @dataProvider providerTestData
 	 */
-	public function testShouldDeleteFilesFromRootFolder( $blog_id, $deleted_files, $available_folders ) {
-		Functions\expect( 'get_current_blog_id' )->andReturn( $blog_id );
+	public function testShouldDeleteFilesFromRootFolder( $config, $deleted_files, $available_folders ) {
+		Functions\expect( 'get_current_blog_id' )->andReturn( $config['blog_id'] );
 
-		$critical_css_path = "vfs://public/wp-content/cache/critical-css/{$blog_id}/";
+		$critical_css_path = "vfs://public/wp-content/cache/critical-css/{$config['blog_id']}/";
 
 		// Test that deleted Files are available.
 		foreach ( $deleted_files as $file ) {
@@ -45,7 +46,7 @@ class Test_CleanCriticalCSS extends FilesystemTestCase {
 			Mockery::mock( Options_Data::class ),
 			$this->filesystem
 		);
-		$critical_css->clean_critical_css();
+		$critical_css->clean_critical_css( $config['version'] );
 
 		// Test that root files are deleted now.
 		foreach ( $deleted_files as $file ) {

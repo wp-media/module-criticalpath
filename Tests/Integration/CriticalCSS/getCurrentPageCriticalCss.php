@@ -1,12 +1,12 @@
 <?php
 
-namespace WPMedia\CriticalPath\Tests\Integration\CriticalCSS;
+namespace WP_Rocket\Tests\Integration\CriticalCSS;
 
 use Brain\Monkey\Functions;
 use WP_Rocket\Tests\Integration\FilesystemTestCase;
 
 /**
- * @covers \WPMedia\CriticalPath\CriticalCSS::get_current_page_critical_css
+ * @covers \WP_Rocket\Engine\CriticalPath\CriticalCSS::get_current_page_critical_css
  *
  * @group  CriticalPath
  * @group  vfs

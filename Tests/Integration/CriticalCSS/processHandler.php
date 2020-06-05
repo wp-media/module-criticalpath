@@ -1,20 +1,20 @@
 <?php
 
-namespace WPMedia\CriticalPath\Tests\Integration\CriticalCSS;
+namespace WP_Rocket\Tests\Integration\CriticalCSS;
 
 use WP_Rocket\Admin\Options_Data;
-use WPMedia\CriticalPath\APIClient;
-use WPMedia\CriticalPath\CriticalCSS;
-use WPMedia\CriticalPath\CriticalCSSGeneration;
-use WPMedia\CriticalPath\DataManager;
-use WPMedia\CriticalPath\ProcessorService;
+use WP_Rocket\Engine\CriticalPath\APIClient;
+use WP_Rocket\Engine\CriticalPath\CriticalCSS;
+use WP_Rocket\Engine\CriticalPath\CriticalCSSGeneration;
+use WP_Rocket\Engine\CriticalPath\DataManager;
+use WP_Rocket\Engine\CriticalPath\ProcessorService;
 use WP_Rocket\Tests\Integration\FilesystemTestCase;
 
 /**
- * @covers \WPMedia\CriticalPath\CriticalCSS::process_handler
- * @uses   \WPMedia\CriticalPath\CriticalCSSGeneration::save
- * @uses   \WPMedia\CriticalPath\CriticalCSSGeneration::dispatch
- * @uses   \WPMedia\CriticalPath\CriticalCSSGeneration::cancel_process
+ * @covers \WP_Rocket\Engine\CriticalPath\CriticalCSS::process_handler
+ * @uses   \WP_Rocket\Engine\CriticalPath\CriticalCSSGeneration::save
+ * @uses   \WP_Rocket\Engine\CriticalPath\CriticalCSSGeneration::dispatch
+ * @uses   \WP_Rocket\Engine\CriticalPath\CriticalCSSGeneration::cancel_process
  * @uses   ::rocket_get_constant
  *
  * @group  CriticalCss
@@ -247,7 +247,7 @@ class Test_ProcessHandler extends FilesystemTestCase {
 			$term->taxonomy
 		);
 
-		$this->to_be_removed['terms'][] = $term_array['term_id'];
+		$this->to_be_removed['terms'][$term_array['term_id']] = $term->taxonomy;
 
 		return $term_array;
 	}

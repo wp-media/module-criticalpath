@@ -1,14 +1,14 @@
 <?php
-namespace WPMedia\CriticalPath\Tests\Integration\CriticalCSSSubscriber;
+namespace WP_Rocket\Tests\Integration\CriticalCSSSubscriber;
 
-use WPMedia\CriticalPath\CriticalCSSSubscriber;
+use WP_Rocket\Engine\CriticalPath\CriticalCSSSubscriber;
 use WP_Rocket\Tests\Integration\FilesystemTestCase;
 
 /**
- * @covers \WPMedia\CriticalPath\CriticalCSSSubscriber::generate_critical_css_on_activation
- * @uses   \WPMedia\CriticalPath\CriticalCss::get_critical_css_path
- * @uses   \WPMedia\CriticalPath\CriticalCss::process_handler
- * @uses   \WPMedia\CriticalPath\CriticalCSSGeneration::cancel_process
+ * @covers \WP_Rocket\Engine\CriticalPath\CriticalCSSSubscriber::generate_critical_css_on_activation
+ * @uses   \WP_Rocket\Engine\CriticalPath\CriticalCss::get_critical_css_path
+ * @uses   \WP_Rocket\Engine\CriticalPath\CriticalCss::process_handler
+ * @uses   \WP_Rocket\Engine\CriticalPath\CriticalCSSGeneration::cancel_process
  * @uses   ::rocket_mkdir_p
  * @uses   ::rocket_get_constant
  *
@@ -80,7 +80,7 @@ class Test_GenerateCriticalCssOnActivation extends FilesystemTestCase {
 		$transient = get_transient( 'rocket_critical_css_generation_process_running' );
 
 		if ( $expected ) {
-			$this->assertSame( [ 'generated', 'total', 'items' ], array_keys( $transient ) );
+			$this->assertSame( [ 'total', 'items' ], array_keys( $transient ) );
 		} else {
 			$this->assertFalse( $transient );
 		}
@@ -114,7 +114,7 @@ class Test_GenerateCriticalCssOnActivation extends FilesystemTestCase {
 		if ( $should_generate ) {
 			$this->assertEquals( 1, $this->did_filter['do_rocket_critical_css_generation'] );
 			$value = get_transient( 'rocket_critical_css_generation_process_running' );
-			$this->assertSame( [ 'generated', 'total', 'items' ], array_keys( $value ) );
+			$this->assertSame( [ 'total', 'items' ], array_keys( $value ) );
 		} else {
 			$this->assertEquals( 0, $this->did_filter['do_rocket_critical_css_generation'] );
 			$this->assertFalse( get_transient( 'rocket_critical_css_generation_process_running' ) );
